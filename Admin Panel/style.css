@@ -6,6 +6,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    font-family: "Roboto", sans-serif;
   }
   
   /* Style the links inside the navigation bar */
@@ -51,7 +52,7 @@
 
 /* Estilos generales */
 body {
-	background-color: #4872fa;
+	background-color: #3f88d1;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -59,54 +60,52 @@ body {
 
 .contenedor-personas {
     display: flex;
-    align-items: center; /* Centra el contenido verticalmente */
     height: 100vh; /* 100% del viewport height */
+    margin-top: 3%;
 }
 
 /* Estilos para la barra lateral */
-.barra-lateral {
+.left-cont {
     height: 90%; /* Altura igual al viewport height */
-    overflow-y: auto; /* Scroll si es necesario */
-    padding: 20px;
+    padding: 1%;
     box-sizing: border-box;
-    width: 35%;
+    width: 37%;
     margin-left: 25px;
 }
 
 /* Estilos para los bloques de persona */
 .persona {
     border: 1px solid #ccc;
-    padding: 11% 12% 2% 7%;
-    margin-bottom: 3%;
+    padding: 6% 0 0 2%;
+    margin-bottom: 2%;
     position: relative;
-    background-color: #3f88d1;
+    background-color:  #3f88d1;
+    width: 75%;
 }
 
-.info {
-    display: flex;
-    flex-direction: column;
-    width: 100%; 
+p {
+    color: white;
+    font-weight: bold;
 }
 
 .campo {
-    display: flex;
+    display: block;
     align-items: center;
 }
 
 label {
+    display: block;
     width: auto; /* Ancho de las etiquetas */
-    text-align: right;
     margin-right: 10px;
     color: white;
+    font-weight: bold;
 }
 
 input {
-    width: 80%;/* Ancho de los campos de entrada */
     padding: 5px;
     border: none;
-    border-radius: 5px;
-    color: white;
     background-color: white;
+    margin-top: 3px;
 }
 
 /* Estilos para las acciones (botones) encima de cada bloque de persona */
@@ -136,5 +135,24 @@ input {
 }
 
 .btn-eliminar {
-    background-color: #f44336;
+    background-color: #9b096f;
+}
+
+
+form {
+    max-width: 70%;
+    margin: auto;
+}
+
+.fields-left {
+    float: left;
+}
+
+.fields-right {
+    float: right;
+}
+
+.fields-left,
+.fields-right {
+    margin-top: 20px;
 }
