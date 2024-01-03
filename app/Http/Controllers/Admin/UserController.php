@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests\Admin\UserRequest;
+use Debugbar;
 
 class UserController extends Controller
 {
@@ -25,16 +26,15 @@ class UserController extends Controller
 
       if(request()->ajax()) {
           
-          $sections = $view->renderSections(); 
+        $sections = $view->renderSections(); 
 
-          return response()->json([
-              'table' => $sections['table'],
-              'form' => $sections['form'],
-          ], 200); 
+        return response()->json([
+            'table' => $sections['table'],
+            'form' => $sections['form'],
+        ], 200); 
       }
 
       return $view;
-
     }
     catch(\Exception $e){
       return response()->json([
@@ -47,7 +47,12 @@ class UserController extends Controller
   {
     try {
 
+      $users = $this->user
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
       $view = View::make('admin.users.index')
+        ->with('users', $users)
         ->with('user', $this->user)
         ->renderSections();
 
@@ -90,12 +95,13 @@ class UserController extends Controller
 
       $view = View::make('admin.users.index')
         ->with('users', $users)
-        ->with('user', $user)
+        ->with('user', $this->user)
         ->renderSections();        
 
       return response()->json([
         'table' => $view['table'],
         'form' => $view['form'],
+        'message' => $message
       ], 200);
     }
     catch(\Exception $e){
@@ -108,17 +114,22 @@ class UserController extends Controller
   public function edit(User $user)
   {
     try{
+
+      $users = $this->user
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
       $view = View::make('admin.users.index')
-      ->with('user', $user)
-      ->with('users', $this->user->where('active', 1)->get());   
-      
+      ->with('users', $users)
+      ->with('user', $user); 
+
       if(request()->ajax()) {
 
           $sections = $view->renderSections(); 
   
           return response()->json([
               'form' => $sections['form'],
-          ], 200);;
+          ], 200);
       }
               
       return $view;
@@ -143,12 +154,13 @@ class UserController extends Controller
       
       $view = View::make('admin.users.index')
         ->with('user', $this->user)
-        ->with('users', $this->user->where('active', 1)->get())
+        ->with('users', $users)
         ->renderSections();
       
       return response()->json([
           'table' => $view['table'],
-          'form' => $view['form']
+          'form' => $view['form'],
+          'message' => $message
       ], 200);
     }
     catch(\Exception $e){

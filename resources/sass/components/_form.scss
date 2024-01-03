@@ -11,18 +11,18 @@
     padding-right: 0.5rem;
 }
 
-.form-clean-button button svg,
-.form-save-button button svg {
+.create-button button svg,
+.store-button button svg {
     width: 2rem;
 }
 
-.form-clean-button button svg path,
-.form-save-button button svg path {
+.create-button button svg path,
+.store-button button svg path {
     fill: $secondary-color;
 }
 
-.form-clean-button button:hover svg path,
-.form-save-button button:hover svg path {
+.create-button button:hover svg path,
+.store-button button:hover svg path {
     fill: $hover-color;
 }
 

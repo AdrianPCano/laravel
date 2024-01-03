@@ -7,6 +7,7 @@
   <!-- Esta línea es para garantizar un diseño responsive que se adapte a todas las pantallas -->
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="shortcut icon" href="https://www.youtube.com/s/desktop/12d6b690/img/favicon.ico">
+  <meta name="csrf-token" content="{{csrf_token()}}">
 
   <title>Título</title>
   <meta name="description" content="descripción de la web, se recomienda 90 caracteres">
@@ -23,6 +24,7 @@
 <body>
 
   @include('admin.layout.partials.header')
+  @include('admin.components.modal-destroy')
 
   <main>
     @yield("content")

@@ -34,17 +34,17 @@
 }
 
 .edit-button button svg,
-.delete-button button svg {
+.destroy-button button svg {
     width: 2rem;
 }
 
 .edit-button button svg path,
-.delete-button button svg path {
+.destroy-button button svg path {
     fill: hsl(0, 0%, 100%);
 }
 
 .edit-button button:hover svg path,
-.delete-button button:hover svg path {
+.destroy-button button:hover svg path {
     fill: $hover-color;
 }
 

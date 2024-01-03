@@ -44,5 +44,3 @@ class UserRequest extends FormRequest
       ];
     }
 }
- © 2020 Josh Goebel
-Powered by Node.js, Express, Highlight.js, and Love.
