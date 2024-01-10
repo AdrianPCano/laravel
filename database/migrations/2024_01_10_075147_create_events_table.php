@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('address')->default("Evento online");
-            $table->decimal('price', 8, 2)->default(0);
+            $table->string('address')->nullable()->default('Online');
+            $table->decimal('price', 8, 2)->nullable()->default(0);
             $table->date('startDate');
             $table->date('endDate');
             $table->time('startTime');

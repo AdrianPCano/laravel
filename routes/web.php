@@ -43,6 +43,19 @@ Route::group(['prefix' => 'admin'], function () {
     ]
   ]);
 
+  Route::resource('idiomas', 'App\Http\Controllers\Admin\LanguageController', [
+    'parameters' => [
+      'idiomas' => 'language', 
+    ],
+    'names' => [
+      'index' => 'languages',
+      'create' => 'languages_create',
+      'edit' => 'languages_edit',
+      'store' => 'languages_store',
+      'destroy' => 'languages_destroy',
+    ]
+  ]);
+
   // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
   // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
   // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

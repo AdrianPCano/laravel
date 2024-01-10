@@ -31,11 +31,11 @@
   </section>
   
   <div class="table-records">
-    @isset($events)
-      @foreach($events as $event_element)
+    @isset($languages)
+      @foreach($languages as $language_element)
         <article class="table-record">
           <div class="table-record-buttons">
-            <div class="edit-button" data-endpoint="{{route('events_edit', ["event" => $event_element->id])}}">
+            <div class="edit-button" data-endpoint="{{route('languages_edit', ["language" => $language_element->id])}}">
               <button>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path
@@ -43,7 +43,7 @@
                 </svg>
               </button>
             </div>
-            <div class="destroy-button"  data-endpoint="{{route('events_destroy', ["event" => $event_element->id])}}">
+            <div class="destroy-button"  data-endpoint="{{route('languages_destroy', ["language" => $language_element->id])}}">
               <button>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
@@ -53,13 +53,8 @@
           </div>
           <div class="table-data">
             <ul>
-              <li><span>Nombre</span>{{$event_element->name}}</li>
-              <li><span>Dirección</span>{{$event_element->address}}</li>
-              <li><span>Precio</span>{{$event_element->price}}</li>
-              <li><span>Día Inicio</span>{{$event_element->startDate}}</li>
-              <li><span>Día Fin</span>{{$event_element->endDate}}</li>
-              <li><span>Hora Inicio</span>{{$event_element->startTime}}</li>
-              <li><span>Hora Fin</span>{{$event_element->endTime}}</li>
+              <li><span>Nombre</span>{{$language_element->name}}</li>
+              <li><span>Etiqueta</span>{{$language_element->label}}</li>
             </ul>
           </div>
         </article>
@@ -76,19 +71,19 @@
 
 @section("form")
   <div class="form-buttons">
-    <div class="create-button" data-endpoint="{{route('events_create')}}">
+    <div class="create-button" data-endpoint="{{route('languages_create')}}">
       <button>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>broom</title><path d="M19.36,2.72L20.78,4.14L15.06,9.85C16.13,11.39 16.28,13.24 15.38,14.44L9.06,8.12C10.26,7.22 12.11,7.37 13.65,8.44L19.36,2.72M5.93,17.57C3.92,15.56 2.69,13.16 2.35,10.92L7.23,8.83L14.67,16.27L12.58,21.15C10.34,20.81 7.94,19.58 5.93,17.57Z" /></svg>
       </button>
     </div>
-    <div class="store-button" data-endpoint="{{route('events_store')}}">
+    <div class="store-button" data-endpoint="{{route('languages_store')}}">
       <button>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>content-save</title><path d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z" /></svg>
       </button>
     </div>
   </div>
   <form class="admin-form">
-    <input type="hidden" name="id" value="{{$event->id ?? ''}}">
+    <input type="hidden" name="id" value="{{$language->id ?? ''}}">
     <div class="form-row">
       <div class="form-element">
         <div class="form-element-label">
@@ -97,71 +92,17 @@
           </label>
         </div>
         <div class="form-element-input">
-          <input type="text" name="name" value="{{$event->name ?? ''}}">
+          <input type="text" name="name" value="{{$language->name ?? ''}}">
         </div>
       </div>
       <div class="form-element">
         <div class="form-element-label">
-          <label for="address">
-            Address
+          <label for="label">
+            Label
           </label>
         </div>
         <div class="form-element-input">
-          <input type="text" name="address" value="{{$event->address ?? ''}}">
-        </div>
-      </div>
-    </div>
-    <div class="form-element">
-      <div class="form-element-label">
-        <label for="price">
-          precio
-        </label>
-      </div>
-      <div class="form-element-input">
-        <input type="number" name="price" value="{{$event->price ?? '0'}}">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-element">
-        <div class="form-element-label">
-          <label for="startDate">
-            startDate
-          </label>
-        </div>
-        <div class="form-element-input">
-          <input type="date" name="startDate" value="{{$event->startDate ?? ''}}">
-        </div>
-      </div>
-      <div class="form-element">
-        <div class="form-element-label">
-          <label for="endDate">
-            endDate
-          </label>
-        </div>
-        <div class="form-element-input">
-          <input type="date" name="endDate" value="{{$event->endDate ?? ''}}">
-        </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-element">
-        <div class="form-element-label">
-          <label for="startTime">
-            startTime
-          </label>
-        </div>
-        <div class="form-element-input">
-          <input type="time" name="startTime" value="{{$event->startTime ?? ''}}">
-        </div>
-      </div>
-      <div class="form-element">
-        <div class="form-element-label">
-          <label for="endTime">
-            endTime
-          </label>
-        </div>
-        <div class="form-element-input">
-          <input type="time" name="endTime" value="{{$event->endTime ?? ''}}">
+          <input type="text" name="label" value="{{$language->label ?? ''}}">
         </div>
       </div>
     </div>
