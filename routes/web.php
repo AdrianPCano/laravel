@@ -56,6 +56,32 @@ Route::group(['prefix' => 'admin'], function () {
     ]
   ]);
 
+  Route::resource('faqs', 'App\Http\Controllers\Admin\FaqController', [
+    'parameters' => [
+      'faqs' => 'faq', 
+    ],
+    'names' => [
+      'index' => 'faqs',
+      'create' => 'faqs_create',
+      'edit' => 'faqs_edit',
+      'store' => 'faqs_store',
+      'destroy' => 'faqs_destroy',
+    ]
+  ]);
+
+  Route::resource('datos-web', 'App\Http\Controllers\Admin\BusinessProfileController', [
+    'parameters' => [
+      'datos-web' => 'businessProfile', 
+    ],
+    'names' => [
+      'index' => 'businessProfiles',
+      'create' => 'businessProfiles_create',
+      'edit' => 'businessProfiles_edit',
+      'store' => 'businessProfiles_store',
+      'destroy' => 'businessProfiles_destroy',
+    ]
+  ]);
+
   // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
   // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
   // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
