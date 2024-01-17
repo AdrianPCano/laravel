@@ -67,12 +67,6 @@ class LanguageController extends Controller
     try{
 
       $data = $request->validated();
-
-      unset($data['password_confirmation']);
-      
-      if (!$request->filled('password') && $request->filled('id')){
-        unset($data['password']);
-      }
   
       $this->language->updateOrCreate([
         'id' => $request->input('id')

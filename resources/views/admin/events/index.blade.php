@@ -55,11 +55,19 @@
             <ul>
               <li><span>Nombre</span>{{$event_element->name}}</li>
               <li><span>Dirección</span>{{$event_element->address}}</li>
+              <li>
+                <span>Población</span>
+                @foreach ($towns as $town)
+                  @if ($event_element->town_id == $town->id)
+                    {{$town->name}}
+                  @endif
+                @endforeach
+              </li>
               <li><span>Precio</span>{{$event_element->price}}</li>
-              <li><span>Día Inicio</span>{{$event_element->startDate}}</li>
-              <li><span>Día Fin</span>{{$event_element->endDate}}</li>
-              <li><span>Hora Inicio</span>{{$event_element->startTime}}</li>
-              <li><span>Hora Fin</span>{{$event_element->endTime}}</li>
+              <li><span>Día Inicio</span>{{$event_element->start_date}}</li>
+              <li><span>Día Fin</span>{{$event_element->end_date}}</li>
+              <li><span>Hora Inicio</span>{{$event_element->start_time}}</li>
+              <li><span>Hora Fin</span>{{$event_element->end_time}}</li>
             </ul>
           </div>
         </article>
@@ -113,6 +121,21 @@
     </div>
     <div class="form-element">
       <div class="form-element-label">
+        <label for="end_time">
+          Población
+        </label>
+      </div>
+      <div class="form-element-input">
+        <select name="town_id">
+          <option value=""></option>
+          @foreach ($towns as $town)
+            <option value="{{$town->id}}" {{ $town->id == $event->town_id ? 'selected' : ''}}>{{$town->name}}</option>
+          @endforeach
+        </select>
+      </div>
+    </div>
+    <div class="form-element">
+      <div class="form-element-label">
         <label for="price">
           precio
         </label>
@@ -124,46 +147,49 @@
     <div class="form-row">
       <div class="form-element">
         <div class="form-element-label">
-          <label for="startDate">
-            startDate
+          <label for="start_date">
+            start_date
           </label>
         </div>
         <div class="form-element-input">
-          <input type="date" name="startDate" value="{{$event->startDate ?? ''}}">
+          <input type="date" name="start_date" value="{{$event->start_date ?? ''}}">
         </div>
       </div>
       <div class="form-element">
         <div class="form-element-label">
-          <label for="endDate">
-            endDate
+          <label for="end_date">
+            end_date
           </label>
         </div>
         <div class="form-element-input">
-          <input type="date" name="endDate" value="{{$event->endDate ?? ''}}">
+          <input type="date" name="end_date" value="{{$event->end_date ?? ''}}">
         </div>
       </div>
     </div>
     <div class="form-row">
       <div class="form-element">
         <div class="form-element-label">
-          <label for="startTime">
-            startTime
+          <label for="start_time">
+            start_time
           </label>
         </div>
         <div class="form-element-input">
-          <input type="time" name="startTime" value="{{$event->startTime ?? ''}}">
+          <input type="time" name="start_time" value="{{$event->start_time ?? ''}}">
         </div>
       </div>
       <div class="form-element">
         <div class="form-element-label">
-          <label for="endTime">
-            endTime
+          <label for="end_time">
+            end_time
           </label>
         </div>
         <div class="form-element-input">
-          <input type="time" name="endTime" value="{{$event->endTime ?? ''}}">
+          <input type="time" name="end_time" value="{{$event->end_time ?? ''}}">
         </div>
       </div>
+      @foreach ($languages as $language)
+          <h1>{{$language->name}}</h1>
+      @endforeach
     </div>
   </form>
 @endsection
