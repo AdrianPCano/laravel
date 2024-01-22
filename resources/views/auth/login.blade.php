@@ -23,7 +23,10 @@
 
 <body>
     <div class="login-container">
-        <form class="login-form">
+        <form class="login-form" method="POST" action="{{ route('login') }}">
+
+            @csrf
+
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" required>
 
