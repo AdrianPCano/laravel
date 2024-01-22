@@ -9,7 +9,7 @@
   <link rel="shortcut icon" href="https://www.youtube.com/s/desktop/12d6b690/img/favicon.ico">
   <meta name="csrf-token" content="{{csrf_token()}}">
 
-  <title>Título</title>
+  <title>Login</title>
   <meta name="description" content="descripción de la web, se recomienda 90 caracteres">
   <meta name="keywords" 	 content="palabras clave, separadas, por comas">
 
@@ -17,18 +17,26 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  @vite(['resources/sass/admin-app.scss', 'resources/js/admin-app.js'])
+  @vite(['resources/sass/auth-app.scss'])
 
 </head>
 
 <body>
+    <div class="login-container">
+        <form class="login-form">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
 
-  @include('admin.layout.partials.header')
-  @include('admin.components.modal-destroy')
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
 
-  <main>
-    @yield("content")
-  </main>
+            <div class="button-container">
+                <a href="" class="forgot-password-link">¿Olvidaste tu contraseña?</a>
+                <button type="submit">iniciar sesión</button>
+            </div>
+        </form>
+    </div>
+
 </body>
 
 </html>
