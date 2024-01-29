@@ -14,11 +14,11 @@ class LanguageSeeder extends Seeder
     public function run(): void
     {
       $languages = [
-          ["name" => "Español",
-           "label" => "ES"
+          ["name" => "español",
+           "label" => "es"
           ],
-          ["name" => "English",
-           "label" => "EN"
+          ["name" => "english",
+           "label" => "en"
           ],
         ];
     

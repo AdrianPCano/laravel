@@ -21,7 +21,7 @@ class Language
       return $view->with('languages', static::$composed);
     }
 
-    static::$composed = $this->languages->orderBy('name', 'asc')->get();
+    static::$composed = $this->languages->orderBy('name', 'desc')->get();
 
     $view->with('languages', static::$composed);
   }
