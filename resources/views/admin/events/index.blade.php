@@ -131,7 +131,7 @@
       </div>
       <div class="form-element">
         <div class="form-element-label">
-          <label for="end_time">
+          <label for="town">
             Población
           </label>
         </div>
@@ -215,7 +215,7 @@
                 </label>
               </div>
               <div class="form-element-input">
-                <input type="text" name="" value="">
+                <input type="text" name="locale['title.{{$language->label}}']" value="">
               </div>
             </div>
           </div>
@@ -227,7 +227,7 @@
                 </label>
               </div>
               <div class="form-element-input">
-                <textarea name=""></textarea>
+                <textarea name="locale['description.{{$language->label}}']"></textarea>
               </div>
             </div>
           </div>
@@ -242,7 +242,7 @@
           </label>
         </div>
         <div class="form-element-input">
-          <input type="image" name=""">
+          <input type="image" name="">
         </div>
       </div>
     </div>

@@ -11,7 +11,9 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+      $this->app->singleton(LocaleService::class, function ($app) {
+        return new LocaleService(new Locale());
+      });
     }
 
     /**
