@@ -11,9 +11,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
     use SoftDeletes;
 
     protected $guarded = [];
     protected $dates = ['deleted_at'];  
+
+    public function town()
+    {
+      return $this->belongsTo(Town::class);
+    }
+
+    public function locales()
+    {
+      return $this->hasMany(Locale::class, 'entity_id')->where('entity', 'events');
+    }
 }

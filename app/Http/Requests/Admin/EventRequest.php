@@ -65,20 +65,20 @@ class EventRequest extends FormRequest
       ];
     }
 
-    public function withValidator($validator)
-    {
-        $validator->after(function ($validator) {
-            $start_date = $this->input('start_date');
-            $end_date = $this->input('end_date');
-            $start_time = $this->input('start_time');
-            $end_time = $this->input('end_time');
+    // public function withValidator($validator)
+    // {
+    //     $validator->after(function ($validator) {
+    //         $start_date = $this->input('start_date');
+    //         $end_date = $this->input('end_date');
+    //         $start_time = $this->input('start_time');
+    //         $end_time = $this->input('end_time');
 
-            $start_dateTime = Carbon::createFromFormat('Y-m-d H:i', $start_date . ' ' . $start_time);
-            $end_dateTime = Carbon::createFromFormat('Y-m-d H:i', $end_date . ' ' . $end_time);
+    //         $start_dateTime = Carbon::createFromFormat('Y-m-d H:i', $start_date . ' ' . $start_time);
+    //         $end_dateTime = Carbon::createFromFormat('Y-m-d H:i', $end_date . ' ' . $end_time);
 
-            if ($end_dateTime->lessThan($start_dateTime)) {
-                $validator->errors()->add('end_time', 'El tiempo de finalización debe ser después del tiempo de inicio.');
-            }
-        });
-    }
+    //         if ($end_dateTime->lessThan($start_dateTime)) {
+    //             $validator->errors()->add('end_time', 'El tiempo de finalización debe ser después del tiempo de inicio.');
+    //         }
+    //     });
+    // }
 }

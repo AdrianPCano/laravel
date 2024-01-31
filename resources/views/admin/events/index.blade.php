@@ -55,14 +55,7 @@
             <ul>
               <li><span>Nombre</span>{{$event_element->name}}</li>
               <li><span>Dirección</span>{{$event_element->address}}</li>
-              <li>
-                <span>Población</span>
-                @foreach ($towns as $town)
-                  @if ($event_element->town_id == $town->id)
-                    {{$town->name}}
-                  @endif
-                @endforeach
-              </li>
+              <li><span>Dirección</span>{{$event_element->town->name}}</li>
               <li><span>Precio</span>{{$event_element->price}}</li>
               <li><span>Día Inicio</span>{{$event_element->start_date}}</li>
               <li><span>Día Fin</span>{{$event_element->end_date}}</li>
@@ -215,7 +208,7 @@
                 </label>
               </div>
               <div class="form-element-input">
-                <input type="text" name="locale['title.{{$language->label}}']" value="">
+                <input type="text" name="locale[title.{{$language->label}}]" value="{{$event['title.'.$language->label] ?? ''}}" />
               </div>
             </div>
           </div>
@@ -227,7 +220,7 @@
                 </label>
               </div>
               <div class="form-element-input">
-                <textarea name="locale['description.{{$language->label}}']"></textarea>
+                <textarea name="locale[description.{{$language->label}}]" >{{$event['description.'.$language->label] ?? ''}}</textarea>
               </div>
             </div>
           </div>
